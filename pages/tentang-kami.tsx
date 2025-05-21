@@ -74,10 +74,10 @@ export default function TentangKami() {
           <h2 className="text-3xl font-bold mb-12">Tim Kami</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             {[
-              { name: 'Sadinal Mufti', role: 'Project Manager', image: '/team/sadinal.jpg' },
-              { name: 'Indriani Miza Alfiyanti', role: 'UI/UX Designer', image: '/team/sadinal.jpg' },
-              { name: 'Muhammad Faruqi', role: 'Full Stack Developer', image: '/team/sadinal.jpg' },
-              { name: 'Maulizar', role: 'Full Stack Developer', image: '/team/sadinal.jpg' },
+              { name: 'Sadinal Mufti', role: 'Project Manager & Full Stack Developer', image: '/team/sadinal.jpg' },
+              { name: 'Indriani Miza Alfiyanti', role: 'UI/UX Designer', image: '/team/indri.jpeg' },
+              { name: 'Muhammad Faruqi', role: 'Backend Developer', image: '/team/faruqi.jpeg' },
+              { name: 'Maulizar', role: 'UI/UX Designer', image: '/team/maulizar.jpeg' },
             ].map((person, i) => (
               <motion.div
                 key={i}
@@ -91,9 +91,10 @@ export default function TentangKami() {
                   src={person.image}
                   alt={person.name}
                   width={200}
-                  height={200}
-                  className="rounded-full object-cover mb-4 border-4 border-[#FEBA17]"
+                  height={260}
+                  className="rounded-[70%/40%] object-cover w-[200px] h-[260px] border-4 border-[#FEBA17] bg-white mb-6"
                 />
+
                 <h3 className="font-semibold text-xl">{person.name}</h3>
                 <p className="text-[#74512D]">{person.role}</p>
               </motion.div>
