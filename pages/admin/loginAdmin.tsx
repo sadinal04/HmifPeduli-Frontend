@@ -13,7 +13,7 @@ export default function AdminLogin() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:3000/admins/login", {
+    const res = await fetch("https://hmif-peduli-backend.vercel.app/admins/login", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

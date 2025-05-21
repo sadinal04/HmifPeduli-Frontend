@@ -25,7 +25,7 @@ export default function NavbarAdmin() {
       }
 
       try {
-        const res = await fetch('http://localhost:3000/admins/profile', {
+        const res = await fetch('https://hmif-peduli-backend.vercel.app/admins/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

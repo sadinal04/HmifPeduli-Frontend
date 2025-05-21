@@ -84,7 +84,7 @@ export default function TambahDonasi() {
       const base64Images = await Promise.all(selectedFiles.map(convertToBase64));
       const campaignData = { ...formData, pictures: base64Images };
 
-      const res = await fetch('http://localhost:3000/campaigns/createCampaign', {
+      const res = await fetch('https://hmif-peduli-backend.vercel.app/campaigns/createCampaign', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(campaignData),

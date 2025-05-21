@@ -40,7 +40,7 @@ export default function VerifikasiPage() {
   // Ambil data donasi saat halaman dimuat
   useEffect(() => {
     const fetchDonations = async () => {
-      const res = await fetch("http://localhost:3000/donations");
+      const res = await fetch("https://hmif-peduli-backend.vercel.app/donations");
       const data = await res.json();
       const pending = data.filter((donation: Donation) => donation.donationStatus === "Pending");
       setDonations(pending);

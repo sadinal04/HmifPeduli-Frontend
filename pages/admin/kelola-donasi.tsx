@@ -42,7 +42,7 @@ export default function KelolaDonasiPage() {
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
-        const res = await fetch('http://localhost:3000/campaigns');
+        const res = await fetch('https://hmif-peduli-backend.vercel.app/campaigns');
         const data = await res.json();
         setCampaigns(data);
       } catch (err) {

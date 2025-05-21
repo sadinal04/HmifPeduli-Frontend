@@ -29,7 +29,7 @@ export default function Profile() {
       }
 
       try {
-        const res = await fetch('http://localhost:3000/users/profile', {
+        const res = await fetch('https://hmif-peduli-backend.vercel.app/users/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -58,7 +58,7 @@ export default function Profile() {
   const handleSave = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch('http://localhost:3000/users/profile', {
+      const res = await fetch('https://hmif-peduli-backend.vercel.app/users/profile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

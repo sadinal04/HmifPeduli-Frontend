@@ -22,7 +22,7 @@ export default function VerifikasiDetailPage() {
   useEffect(() => {
     if (!id) return;
     const fetchDonation = async () => {
-      const res = await fetch(`http://localhost:3000/donations`);
+      const res = await fetch(`https://hmif-peduli-backend.vercel.app/donations`);
       const data = await res.json();
       const found = data.find((d: Donation) => d._id === id);
       setDonation(found);
@@ -31,7 +31,7 @@ export default function VerifikasiDetailPage() {
   }, [id]);
 
   const handleVerify = async (status: "Successful" | "Abort") => {
-    const res = await fetch(`http://localhost:3000/donations/verify/${id}`, {
+    const res = await fetch(`https://hmif-peduli-backend.vercel.app/donations/verify/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status }),

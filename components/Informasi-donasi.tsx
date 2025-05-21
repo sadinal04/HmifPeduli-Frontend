@@ -37,7 +37,7 @@ export default function InformasiDonasi() {
     const intervalId = setInterval(() => {
       const fetchCampaigns = async () => {
         try {
-          const response = await fetch('http://localhost:3000/campaigns/');
+          const response = await fetch('https://hmif-peduli-backend.vercel.app/campaigns/');
           const data = await response.json();
           setCampaigns(data); // Update state campaigns dengan data terbaru
         } catch (error) {

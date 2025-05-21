@@ -30,7 +30,7 @@ export default function LaporanDonasi() {
   useEffect(() => {
     const fetchLaporan = async () => {
       try {
-        const res = await fetch('http://localhost:3000/reports');
+        const res = await fetch('https://hmif-peduli-backend.vercel.app/reports');
         const data = await res.json();
 
         const completedReports = data.filter((report: any) => report.reportStatus === 'Completed');

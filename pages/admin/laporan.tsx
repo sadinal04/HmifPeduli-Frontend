@@ -26,7 +26,7 @@ export default function LaporanListPage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("http://localhost:3000/reports")
+    fetch("https://hmif-peduli-backend.vercel.app/reports")
       .then((res) => res.json())
       .then((data) => setReports(data));
   }, []);

@@ -31,7 +31,7 @@ export default function PopupDonasi({
         const token = localStorage.getItem('token');
         if (!token) return;
 
-        const response = await fetch("http://localhost:3000/users/profile", {
+        const response = await fetch("https://hmif-peduli-backend.vercel.app/users/profile", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -81,7 +81,7 @@ export default function PopupDonasi({
         payload.donaturName = userName;
       }
 
-      const response = await fetch("http://localhost:3000/donations", {
+      const response = await fetch("https://hmif-peduli-backend.vercel.app/donations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

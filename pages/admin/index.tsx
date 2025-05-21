@@ -49,7 +49,7 @@ export default function AdminDashboard() {
     }
 
     // Verifikasi token dan ambil data admin
-    fetch('http://localhost:3000/admins/profile', {
+    fetch('https://hmif-peduli-backend.vercel.app/admins/profile', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export default function AdminDashboard() {
 
     // Ambil jumlah donasi yang masih pending
     const fetchPendingDonations = async () => {
-      const res = await fetch('http://localhost:3000/donations');
+      const res = await fetch('https://hmif-peduli-backend.vercel.app/donations');
       const data = await res.json();
       const pending = data.filter((donation: any) => donation.donationStatus === "Pending");
       setPendingDonationsCount(pending.length);

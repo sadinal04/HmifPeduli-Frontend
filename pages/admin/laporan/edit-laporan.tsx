@@ -28,7 +28,7 @@ export default function EditLaporanPage() {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://localhost:3000/reports/${id}`)
+    fetch(`https://hmif-peduli-backend.vercel.app/reports/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setReport(data);
@@ -64,7 +64,7 @@ export default function EditLaporanPage() {
       return;
     }
 
-    const res = await fetch(`http://localhost:3000/reports/${report._id}`, {
+    const res = await fetch(`https://hmif-peduli-backend.vercel.app/reports/${report._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ allocations }),

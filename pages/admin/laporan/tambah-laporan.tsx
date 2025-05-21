@@ -31,7 +31,7 @@ export default function TambahLaporanPage() {
   const [saldo, setSaldo] = useState<number>(0);
 
   useEffect(() => {
-    fetch("http://localhost:3000/campaigns")
+    fetch("https://hmif-peduli-backend.vercel.app/campaigns")
       .then((res) => res.json())
       .then((data) => {
         const active = data
@@ -62,11 +62,11 @@ export default function TambahLaporanPage() {
     }
 
     const fetchDetail = async () => {
-      const res = await fetch(`http://localhost:3000/campaigns/${campaignId}`);
+      const res = await fetch(`https://hmif-peduli-backend.vercel.app/campaigns/${campaignId}`);
       const data = await res.json();
       setCampaign(data);
 
-      const reportRes = await fetch(`http://localhost:3000/reports/campaign/${campaignId}`);
+      const reportRes = await fetch(`https://hmif-peduli-backend.vercel.app/reports/campaign/${campaignId}`);
       const reports = await reportRes.json();
       const totalUsed = reports.reduce((sum: number, r: any) => sum + r.totalAllocatedFunds, 0);
       setSaldo(data.fundCollected - totalUsed);
@@ -102,7 +102,7 @@ export default function TambahLaporanPage() {
       return;
     }
 
-    const response = await fetch("http://localhost:3000/reports", {
+    const response = await fetch("https://hmif-peduli-backend.vercel.app/reports", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ campaignId, allocations }),

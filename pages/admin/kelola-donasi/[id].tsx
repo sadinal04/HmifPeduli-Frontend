@@ -49,7 +49,7 @@ export default function EditDonasiPage() {
     if (!id) return;
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/campaigns/${id}`);
+        const res = await fetch(`https://hmif-peduli-backend.vercel.app/campaigns/${id}`);
         const data = await res.json();
         setFormData({
           ...data,
@@ -78,7 +78,7 @@ export default function EditDonasiPage() {
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/campaigns/editCampaign/${id}`, {
+      const res = await fetch(`https://hmif-peduli-backend.vercel.app/campaigns/editCampaign/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -98,7 +98,7 @@ export default function EditDonasiPage() {
   const handleDelete = async () => {
     if (confirm('Yakin ingin menghapus kampanye ini?')) {
       try {
-        const res = await fetch(`http://localhost:3000/campaigns/deleteCampaign/${id}`, {
+        const res = await fetch(`https://hmif-peduli-backend.vercel.app/campaigns/deleteCampaign/${id}`, {
           method: 'DELETE'
         });
         if (res.ok) {

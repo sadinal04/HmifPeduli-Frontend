@@ -19,7 +19,7 @@ export default function DonasiDetail() {
     if (!id) return;
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/campaigns/${id}`);
+        const res = await fetch(`https://hmif-peduli-backend.vercel.app/campaigns/${id}`);
         if (!res.ok) throw new Error('Campaign not found');
         const result = await res.json();
         setData(result);
@@ -40,7 +40,7 @@ export default function DonasiDetail() {
       if (file) formData.append("proof", file);
       formData.append("campaignId", id as string);
 
-      const res = await fetch("http://localhost:3000/donations", {
+      const res = await fetch("https://hmif-peduli-backend.vercel.app/donations", {
         method: "POST",
         body: formData,
       });
