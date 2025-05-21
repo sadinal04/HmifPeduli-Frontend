@@ -101,7 +101,8 @@ export default function KelolaDonasiPage() {
             const categoryColor = getCategoryColor(item.campaign.category);
             const collected = item.campaign.collected ?? 0;
             const target = item.campaign.target ?? 1;
-            const progress = (collected / target) * 100;
+            const rawProgress = (collected / target) * 100;
+            const progress = Math.min(rawProgress, 100);
 
             return (
               <motion.div
@@ -133,6 +134,7 @@ export default function KelolaDonasiPage() {
                         style={{ width: `${progress}%` }}
                       />
                     </div>
+
 
                     <p className="text-xs text-gray-600 mb-1">
                     Status:{' '}

@@ -58,7 +58,8 @@ export default function DonasiDetail() {
   if (loading) return <p className="text-center mt-10">Memuat data...</p>;
   if (!data) return <p className="text-center mt-10 text-red-500">Donasi tidak ditemukan.</p>;
 
-  const progress = (data.fundCollected / data.fundTarget) * 100;
+  const rawProgress = (data.fundCollected / data.fundTarget) * 100;
+  const progress = Math.min(rawProgress, 100);
 
   return (
     <>
@@ -143,11 +144,17 @@ export default function DonasiDetail() {
               <div className="text-sm mb-1">Target: Rp{data.fundTarget.toLocaleString('id-ID')}</div>
               <div className="text-sm mb-1">📅 Berakhir: {new Date(data.endDate).toLocaleDateString('id-ID')}</div>
               <div className="w-full h-2 bg-gray-200 rounded-full mb-4">
-                <div
+              <div
                   className="h-2 bg-[#FEBA17] rounded-full"
                   style={{ width: `${progress}%` }}
                 />
               </div>
+
+              {rawProgress > 100 && (
+                <p className="text-xs text-green-600 font-semibold mt-1">
+                  🎉 Donasi telah melebihi target!
+                </p>
+              )}
               <button
                 onClick={() => setShowPopup(true)}
                 className="w-full bg-[#4E1F00] hover:bg-[#74512D] text-white py-2 rounded-full text-sm font-semibold"

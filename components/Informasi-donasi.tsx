@@ -76,7 +76,9 @@ export default function InformasiDonasi() {
       <div ref={scrollRef} className="flex overflow-x-auto space-x-6 px-2 hide-scrollbar scroll-smooth">
         {campaigns.map((item, index) => {
           const sisa = item.campaign.target - item.campaign.collected;
-          const progress = (item.campaign.collected / item.campaign.target) * 100;
+          const rawProgress = (item.campaign.collected / item.campaign.target) * 100;
+          const progress = Math.min(rawProgress, 100);
+
           const categoryColor = getCategoryColor(item.campaign.category); // Dapatkan warna berdasarkan kategori
 
           return (
@@ -107,6 +109,7 @@ export default function InformasiDonasi() {
                       style={{ width: `${progress}%` }}
                     />
                   </div>
+
                   <div className="text-sm text-[#4E1F00] font-medium mb-2">
                     <p>Target: {formatRupiah(item.campaign.target)}</p>
                     <p>Terkumpul: {formatRupiah(item.campaign.collected)}</p>
