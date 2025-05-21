@@ -74,63 +74,65 @@ export default function InformasiDonasi() {
 
       {/* Cards */}
       <div ref={scrollRef} className="flex overflow-x-auto space-x-6 px-2 hide-scrollbar scroll-smooth">
-        {campaigns.map((item, index) => {
-          const sisa = item.campaign.target - item.campaign.collected;
-          const rawProgress = (item.campaign.collected / item.campaign.target) * 100;
-          const progress = Math.min(rawProgress, 100);
+        {campaigns
+          .filter((item) => item.campaign.status === 'Active') // hanya tampilkan status 'Active'
+          .map((item, index) => {
+            const sisa = item.campaign.target - item.campaign.collected;
+            const rawProgress = (item.campaign.collected / item.campaign.target) * 100;
+            const progress = Math.min(rawProgress, 100);
 
-          const categoryColor = getCategoryColor(item.campaign.category); // Dapatkan warna berdasarkan kategori
+            const categoryColor = getCategoryColor(item.campaign.category); // Warna kategori
 
-          return (
-            <motion.div
-              key={item.campaignId}
-              initial={{ opacity: 0, x: -40 }} // Mulai dari opacity 0 dan bergerak dari kiri
-              whileInView={{ opacity: 1, x: 0 }} // Masuk ke opacity 1 dan posisi semula
-              transition={{ duration: 0.6, delay: index * 0.2 }} // Durasi animasi dan delay per elemen
-              viewport={{ once: true }} // Animasi hanya terjadi sekali
-            >
-              <div className="min-w-[300px] max-w-[300px] bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
-                <img
-                  src={item.campaign.image || "default-image.jpg"} // Ganti dengan gambar kampanye yang sesuai jika ada
-                  alt={item.campaign.name}
-                  className="w-full h-48 object-cover rounded-t-xl"
-                />
-                <div className="p-4">
-                  <span
-                    className="text-xs font-semibold px-2 py-1 rounded-full mb-2 inline-block text-white"
-                    style={{ backgroundColor: categoryColor }} // Gunakan warna kategori
-                  >
-                    {item.campaign.category}
-                  </span>
-                  <h3 className="text-sm font-semibold text-[#4E1F00] mb-2">{item.campaign.name}</h3>
-                  <div className="w-full h-1 bg-gray-200 rounded-full mb-2">
-                    <div
-                      className="h-1 rounded-full bg-[#FEBA17]"
-                      style={{ width: `${progress}%` }}
-                    />
+            return (
+              <motion.div
+                key={item.campaignId}
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="min-w-[300px] max-w-[300px] bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
+                  <img
+                    src={item.campaign.image || "default-image.jpg"}
+                    alt={item.campaign.name}
+                    className="w-full h-48 object-cover rounded-t-xl"
+                  />
+                  <div className="p-4">
+                    <span
+                      className="text-xs font-semibold px-2 py-1 rounded-full mb-2 inline-block text-white"
+                      style={{ backgroundColor: categoryColor }}
+                    >
+                      {item.campaign.category}
+                    </span>
+                    <h3 className="text-sm font-semibold text-[#4E1F00] mb-2">{item.campaign.name}</h3>
+                    <div className="w-full h-1 bg-gray-200 rounded-full mb-2">
+                      <div
+                        className="h-1 rounded-full bg-[#FEBA17]"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+
+                    <div className="text-sm text-[#4E1F00] font-medium mb-2">
+                      <p>Target: {formatRupiah(item.campaign.target)}</p>
+                      <p>Terkumpul: {formatRupiah(item.campaign.collected)}</p>
+                      <p>Sisa: {formatRupiah(sisa)}</p>
+                    </div>
+                    <Link href={`/informasi-donasi/${item.campaignId}`}>
+                      <button className="w-full bg-[#4E1F00] hover:bg-[#74512D] text-white font-semibold rounded-full mt-2 py-2 text-sm">
+                        MULAI DONASI 💚
+                      </button>
+                    </Link>
+
+                    <Link href={`/informasi-donasi/${item.campaignId}`}>
+                      <button className="w-full mt-2 text-[#FEBA17] font-semibold hover:underline text-sm">
+                        Lihat Selengkapnya →
+                      </button>
+                    </Link>
                   </div>
-
-                  <div className="text-sm text-[#4E1F00] font-medium mb-2">
-                    <p>Target: {formatRupiah(item.campaign.target)}</p>
-                    <p>Terkumpul: {formatRupiah(item.campaign.collected)}</p>
-                    <p>Sisa: {formatRupiah(sisa)}</p>
-                  </div>
-                  <Link href={`/informasi-donasi/${item.campaignId}`}>
-                    <button className="w-full bg-[#4E1F00] hover:bg-[#74512D] text-white font-semibold rounded-full mt-2 py-2 text-sm">
-                      MULAI DONASI 💚
-                    </button>
-                  </Link>
-
-                  <Link href={`/informasi-donasi/${item.campaignId}`}>
-                    <button className="w-full mt-2 text-[#FEBA17] font-semibold hover:underline text-sm">
-                      Lihat Selengkapnya →
-                    </button>
-                  </Link>
                 </div>
-              </div>
-            </motion.div>
-          );
-        })}
+              </motion.div>
+            );
+          })}
       </div>
 
       {/* Tombol panah bawah */}
