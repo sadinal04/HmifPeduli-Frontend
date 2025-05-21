@@ -14,7 +14,7 @@ export default function LaporanDetail() {
   useEffect(() => {
     if (!id) return;
 
-    fetch('http://localhost:3000/reports')
+    fetch('https://hmif-peduli-backend.vercel.app/reports')
       .then((res) => res.json())
       .then((data) => {
         setReports(data);
@@ -133,11 +133,6 @@ export default function LaporanDetail() {
                   style={{ width: `${progress}%` }}
                 />
               </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h4 className="font-semibold text-lg mb-4">Donatur Terbaru</h4>
-              <p className="text-sm text-gray-500">Belum tersedia dari backend</p>
             </div>
           </div>
         </div>

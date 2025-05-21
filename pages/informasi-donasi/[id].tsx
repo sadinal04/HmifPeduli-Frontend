@@ -162,15 +162,6 @@ export default function DonasiDetail() {
                 DONASI
               </button>
             </div>
-
-            <div className="bg-white p-4 rounded-xl shadow">
-              <h4 className="font-semibold mb-2">Donatur Terbaru</h4>
-              <ul className="space-y-1 text-sm">
-                <li>❤️ Muhammad Faruqi - Rp200,000</li>
-                <li>❤️ Indriani Miza Alfiyanti - Rp250,000</li>
-                <li>❤️ Maulizar - Rp150,000</li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
