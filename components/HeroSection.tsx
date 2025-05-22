@@ -53,7 +53,7 @@ export default function HeroSection() {
         </motion.p>
 
         <div className="flex gap-4">
-          <Link href="/">
+          <Link href="/#informasi-kampanye">
             <button className="border-2 border-[#74512D] bg-[#74512D] text-white px-6 py-3 rounded-full font-medium text-lg">
               Bergabung
             </button>
